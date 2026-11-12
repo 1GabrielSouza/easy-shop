@@ -1,3 +1,4 @@
+
 package com.example.easyshop.data.local
 
 import android.content.Context
@@ -25,7 +26,9 @@ abstract class EasyShopDatabase : RoomDatabase() {
                     context.applicationContext,
                     EasyShopDatabase::class.java,
                     "easyshop.db"
-                ).build().also { INSTANCE = it }
+                ).build().also {
+                    INSTANCE = it
+                }
             }
         }
     }
