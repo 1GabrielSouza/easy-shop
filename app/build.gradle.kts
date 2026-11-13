@@ -39,6 +39,8 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
 
     // SQL (Room) - Clientes
     implementation(libs.androidx.room.runtime)
@@ -51,6 +53,7 @@ dependencies {
 
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
+
 
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.runner)

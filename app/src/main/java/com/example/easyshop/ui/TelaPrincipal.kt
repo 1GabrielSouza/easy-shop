@@ -5,7 +5,10 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -33,6 +36,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.example.easyshop.R
 import com.example.easyshop.ui.clientes.ClientesTela
+import com.example.easyshop.ui.componentes.EstadoVazio
 import com.example.easyshop.ui.produtos.ProdutosTela
 import com.example.easyshop.ui.theme.Bricolage
 import com.example.easyshop.ui.theme.EasyShopTheme
@@ -43,9 +47,21 @@ enum class Aba(val rotulo: String, val banco: String, @DrawableRes val icone: In
     CLIENTES("Clientes", "SQL · Room", R.drawable.ic_user),
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+/**
+ * Barra com a marca, as abas e o conteúdo da aba escolhida.
+ * [conteudoDaAba] já vem com as telas reais; a Preview troca por um conteúdo de exemplo
+ * (as telas reais precisam dos bancos, que não existem na Preview).
+ */
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
-fun TelaPrincipal() {
+fun TelaPrincipal(
+    conteudoDaAba: @Composable (aba: Aba, modifier: Modifier) -> Unit = { aba, modifier ->
+        when (aba) {
+            Aba.PRODUTOS -> ProdutosTela(modifier)
+            Aba.CLIENTES -> ClientesTela(modifier)
+        }
+    },
+) {
     // rememberSaveable: a aba escolhida sobrevive a girar a tela.
     var abaAtual by rememberSaveable { mutableStateOf(Aba.PRODUTOS) }
 
@@ -69,11 +85,8 @@ fun TelaPrincipal() {
             }
         },
     ) { espaco ->
-        val conteudo = Modifier.padding(espaco)
-        when (abaAtual) {
-            Aba.PRODUTOS -> ProdutosTela(conteudo)
-            Aba.CLIENTES -> ClientesTela(conteudo)
-        }
+        // consumeWindowInsets: as telas usam imePadding() sem somar de novo a barra de navegação.
+        conteudoDaAba(abaAtual, Modifier.padding(espaco).consumeWindowInsets(espaco))
     }
 }
 
@@ -122,5 +135,14 @@ private fun RotuloDaAba(aba: Aba) {
 )
 @Composable
 private fun TelaPrincipalPreview() {
-    EasyShopTheme { TelaPrincipal() }
+    EasyShopTheme {
+        TelaPrincipal { aba, modifier ->
+            EstadoVazio(
+                icone = aba.icone,
+                titulo = aba.rotulo,
+                texto = "Prévia: no app, aqui entra a tela real.",
+                modifier = modifier.fillMaxSize(),
+            )
+        }
+    }
 }

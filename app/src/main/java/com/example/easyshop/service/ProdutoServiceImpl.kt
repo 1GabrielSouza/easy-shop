@@ -22,10 +22,10 @@ class ProdutoServiceImpl(
     ): Result<Long> {
         val nomeLimpo = nome.trim()
         if (nomeLimpo.isEmpty()) {
-            return Result.failure(IllegalArgumentException("Informe o nome do produto."))
+            return Result.failure(ErroDeValidacao(ErroDeValidacao.Campo.NOME, "Informe o nome do produto."))
         }
         if (preco.isNaN() || preco <= 0.0) {
-            return Result.failure(IllegalArgumentException("O preço deve ser maior que zero."))
+            return Result.failure(ErroDeValidacao(ErroDeValidacao.Campo.PRECO, "O preço deve ser maior que zero."))
         }
         val produto = Produto(nome = nomeLimpo, preco = preco, atributos = normalizar(atributos))
         return withContext(dispatcher) { runCatching { repository.inserir(produto) } }
@@ -34,7 +34,7 @@ class ProdutoServiceImpl(
     override suspend fun listar(): List<Produto> =
         withContext(dispatcher) { repository.listarTodos() }
 
-    /** trim em chaves e valores, descarta chave vazia; chaves repetidas (sem diferenciar caixa) mantêm a última. */
+    /** Trim em chaves e valores, descarta chave vazia; chaves repetidas (sem diferenciar caixa) mantêm a última. */
     private fun normalizar(atributos: Map<String, String>): MutableMap<String, String> {
         val porChave = linkedMapOf<String, Pair<String, String>>()
         for ((chave, valor) in atributos) {
