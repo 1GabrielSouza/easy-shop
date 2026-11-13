@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Símbolo EasyShop (etiqueta). Furo e linha de valor vazados: mostram o fundo. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp" android:height="28.57dp"
+    android:viewportWidth="56" android:viewportHeight="40">
+    <group android:translateX="-4" android:translateY="-12">
+        <path android:fillColor="#FF5CCFA4" android:fillType="evenOdd"
+            android:pathData="M24,14H50A8,8 0,0 1,58,22V42A8,8 0,0 1,50,50H24Q21.3,50 19.5,48L7.9,35Q6.1,32 7.9,29L19.5,16Q21.3,14 24,14ZM14.5,32A4.5,4.5 0,1 0,23.5,32A4.5,4.5 0,1 0,14.5,32ZM32,34H48A3,3 0,0 1,48,40H32A3,3 0,0 1,32,34Z" />
+        <path android:fillColor="#FFFF9A82" android:pathData="M32,24H40A3,3 0,0 1,40,30H32A3,3 0,0 1,32,24Z" />
+    </group>
+</vector>
