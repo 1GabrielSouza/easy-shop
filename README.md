@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-    🎬 <a href="https://drive.google.com/file/d/1TtqdEv2OMjJ_TqWHV8AWQMzloP34laZv/view?usp=drive_link"><b>Vídeo de demonstração no emulador</b></a>
+        🎬 <b>Vídeo de demonstração no emulador:</b> <a href="https://youtu.be/cymqL9abGfs">YouTube</a> · <a href="https://drive.google.com/file/d/1TtqdEv2OMjJ_TqWHV8AWQMzloP34laZv/view?usp=drive_link">Google Drive</a>
 </p>
 
 ---
