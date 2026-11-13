@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ícone de traço do EasyShop. A cor vem do tint do Icon() no Compose. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <path android:pathData="M5,6.2a7,2.7 0,1 0,14,0a7,2.7 0,1 0,-14,0z"
+        android:strokeColor="#FF000000" android:strokeWidth="1.8"
+        android:strokeLineCap="round" android:strokeLineJoin="round" />
+    <path android:pathData="M5,6.2v11.6c0,1.5 3.1,2.7 7,2.7s7,-1.2 7,-2.7V6.2"
+        android:strokeColor="#FF000000" android:strokeWidth="1.8"
+        android:strokeLineCap="round" android:strokeLineJoin="round" />
+    <path android:pathData="M5,12c0,1.5 3.1,2.7 7,2.7s7,-1.2 7,-2.7"
+        android:strokeColor="#FF000000" android:strokeWidth="1.8"
+        android:strokeLineCap="round" android:strokeLineJoin="round" />
+</vector>

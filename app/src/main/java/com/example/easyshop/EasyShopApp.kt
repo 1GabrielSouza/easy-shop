@@ -8,5 +8,6 @@ class EasyShopApp : Application() {
     override fun onCreate() {
         super.onCreate()
         ObjectBox.init(this)
+        ServiceLocator.init(this)
     }
 }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Só o que o sistema desenha antes do Compose (janela, splash e ícone). O resto está em ui/theme/Color.kt. -->
+    <color name="fundo_janela">#FFF3F5F2</color>
+    <color name="ic_launcher_fundo">#FF0D6A4F</color>
+</resources>
