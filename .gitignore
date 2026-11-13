@@ -5,3 +5,6 @@ local.properties
 .idea/workspace.xml
 .idea/caches/
 .DS_Store
+
+.idea/modules.xml
+*.json.bak

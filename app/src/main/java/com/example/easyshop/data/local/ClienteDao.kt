@@ -12,11 +12,15 @@ interface ClienteDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun inserir(cliente: ClienteEntity): Long
 
-    @Query("SELECT * FROM clientes ORDER BY nomeCompleto ASC")
+    /** Mais novo primeiro: o cliente recém-cadastrado aparece no topo da lista. */
+    @Query("SELECT * FROM clientes ORDER BY id DESC")
     fun listarTodos(): Flow<List<ClienteEntity>>
 
     @Query("SELECT * FROM clientes WHERE id = :id LIMIT 1")
     suspend fun buscarPorId(id: Int): ClienteEntity?
+
+    @Query("SELECT * FROM clientes WHERE email = :email LIMIT 1")
+    suspend fun buscarPorEmail(email: String): ClienteEntity?
 
     @Query("DELETE FROM clientes WHERE id = :id")
     suspend fun excluirPorId(id: Int)
